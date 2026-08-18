@@ -1,0 +1,23 @@
+name: Portfolio CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  validate-portfolio:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate portfolio files
+        run: |
+          echo "Checking Technical Project Management Portfolio..."
+          test -f README.md
+          echo "README.md exists"
+          echo "Portfolio validation completed successfully."
